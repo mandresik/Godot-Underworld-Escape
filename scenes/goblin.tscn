@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://6sdpwucefq"]
+
+[ext_resource type="Script" path="res://scripts/Goblin.gd" id="1_tqmks"]
+[ext_resource type="Texture2D" uid="uid://dlk2qu85wh2nl" path="res://assets/enemies/goblin/goblin_idle_anim_f0.png" id="1_xs31m"]
+[ext_resource type="Texture2D" uid="uid://byly14sk10dpl" path="res://assets/enemies/goblin/goblin_idle_anim_f1.png" id="2_jedvs"]
+[ext_resource type="Texture2D" uid="uid://d1ckif4nj73fp" path="res://assets/enemies/goblin/goblin_idle_anim_f2.png" id="3_2yy0m"]
+[ext_resource type="Texture2D" uid="uid://dgp7lr86qh0ip" path="res://assets/enemies/goblin/goblin_idle_anim_f3.png" id="4_syah5"]
+[ext_resource type="Texture2D" uid="uid://bv3vbtcaybk82" path="res://assets/enemies/goblin/goblin_run_anim_f0.png" id="5_w5dk5"]
+[ext_resource type="Texture2D" uid="uid://bxwy8k7735ngd" path="res://assets/enemies/goblin/goblin_run_anim_f1.png" id="6_d18ia"]
+[ext_resource type="Texture2D" uid="uid://bja83qtqebu1n" path="res://assets/enemies/goblin/goblin_run_anim_f2.png" id="7_141d7"]
+[ext_resource type="Texture2D" uid="uid://nn8jtcihedb0" path="res://assets/enemies/goblin/goblin_run_anim_f3.png" id="8_vh58n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pdh4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xs31m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jedvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2yy0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_syah5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w5dk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d18ia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_141d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vh58n")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlqxy"]
+size = Vector2(8, 8.25)
+
+[node name="Goblin" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_tqmks")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pdh4h")
+animation = &"run"
+frame = 2
+frame_progress = 0.0656404
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.875)
+shape = SubResource("RectangleShape2D_jlqxy")
+
+[node name="IdleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
