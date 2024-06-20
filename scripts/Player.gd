@@ -3,6 +3,8 @@ extends CharacterBody2D
 var speed : int
 var shot_cooldown : float
 var can_shoot : bool
+var health : int
+var bullet_count : int
 
 signal shooting
 
@@ -11,6 +13,8 @@ func _ready():
 	speed = Settings.INIT_PLAYER_SPEED
 	can_shoot = true
 	$ShootingTimer.wait_time = Settings.INIT_SHOT_COOLDOWN
+	health = Settings.INIT_HEALTH
+	bullet_count = Settings.INIT_BULLET_COUNT
 
 
 func _physics_process(_delta):
@@ -43,11 +47,13 @@ func handle_mouse_rotation():
 
 
 func handle_mouse_click():
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
-		var aim_direction = get_global_mouse_position() - position
-		shooting.emit(position, aim_direction)
-		can_shoot = false
-		$ShootingTimer.start()
+	if bullet_count > 0:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
+			var aim_direction = get_global_mouse_position() - position
+			shooting.emit(position, aim_direction)
+			can_shoot = false
+			$ShootingTimer.start()
+			bullet_count -= 1
 
 
 func _on_shooting_timer_timeout():
