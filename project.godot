@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="Underworld Escape"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Bullets"
+2d_physics/layer_5="Items"
