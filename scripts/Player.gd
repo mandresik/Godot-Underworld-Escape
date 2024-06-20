@@ -58,3 +58,7 @@ func handle_mouse_click():
 
 func _on_shooting_timer_timeout():
 	can_shoot = true
+
+
+func subtract_health(amount: int):
+	print("subtracting health ", amount)

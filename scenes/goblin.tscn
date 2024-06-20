@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6sdpwucefq"]
+[gd_scene load_steps=13 format=3 uid="uid://6sdpwucefq"]
 
 [ext_resource type="Script" path="res://scripts/Goblin.gd" id="1_tqmks"]
 [ext_resource type="Texture2D" uid="uid://dlk2qu85wh2nl" path="res://assets/enemies/goblin/goblin_idle_anim_f0.png" id="1_xs31m"]
@@ -44,23 +44,24 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlqxy"]
 size = Vector2(8, 8.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wllqb"]
+size = Vector2(8.5, 8.75)
+
 [node name="Goblin" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 collision_layer = 4
-collision_mask = 3
 script = ExtResource("1_tqmks")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pdh4h")
 animation = &"run"
-frame = 2
-frame_progress = 0.0656404
+frame_progress = 0.0204772
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1.875)
@@ -68,4 +69,13 @@ shape = SubResource("RectangleShape2D_jlqxy")
 
 [node name="IdleTimer" type="Timer" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 1.875)
+shape = SubResource("RectangleShape2D_wllqb")
+
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
