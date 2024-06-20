@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4q7ndqhw43vn"
-path="res://.godot/imported/player_NW_0.png-dc0aa1073ddd3e84941c75ce10ab0f59.ctex"
+uid="uid://dlk2qu85wh2nl"
+path="res://.godot/imported/goblin_idle_anim_f0.png-adbbde5c47526f4c1ae234e37831e896.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hero/NW/player_NW_0.png"
-dest_files=["res://.godot/imported/player_NW_0.png-dc0aa1073ddd3e84941c75ce10ab0f59.ctex"]
+source_file="res://assets/enemies/goblin/goblin_idle_anim_f0.png"
+dest_files=["res://.godot/imported/goblin_idle_anim_f0.png-adbbde5c47526f4c1ae234e37831e896.ctex"]
 
 [params]
 
