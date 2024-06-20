@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b76pjyewndytm"]
+[gd_scene load_steps=7 format=3 uid="uid://b76pjyewndytm"]
 
 [ext_resource type="PackedScene" uid="uid://bqy67u7uiuawe" path="res://scenes/world.tscn" id="1_opego"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_v4iix"]
 [ext_resource type="PackedScene" uid="uid://cdko55264uxi" path="res://scenes/player.tscn" id="2_a3rat"]
 [ext_resource type="Script" path="res://scripts/BulletManager.gd" id="3_x1nsi"]
 [ext_resource type="PackedScene" uid="uid://bngqwklgqhm3k" path="res://scenes/bullet.tscn" id="4_sb4ue"]
+[ext_resource type="PackedScene" uid="uid://tf26e8gyhe8x" path="res://scenes/panel.tscn" id="5_yabbq"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_v4iix")
 
 [node name="World" parent="." instance=ExtResource("1_opego")]
 
@@ -14,5 +17,7 @@
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("3_x1nsi")
 bullet_scene = ExtResource("4_sb4ue")
+
+[node name="Panel" parent="." instance=ExtResource("5_yabbq")]
 
 [connection signal="shooting" from="Player" to="BulletManager" method="_on_player_shooting"]

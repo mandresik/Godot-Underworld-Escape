@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://tf26e8gyhe8x"]
+
+[ext_resource type="Texture2D" uid="uid://cn6c484scrsvt" path="res://assets/items/heart.png" id="1_dxwyy"]
+[ext_resource type="Texture2D" uid="uid://c4tojsbnr0iqb" path="res://assets/items/health_box.png" id="2_50hqy"]
+[ext_resource type="Texture2D" uid="uid://ct7upb2t2mie0" path="res://assets/items/gun_box.png" id="3_ynwkf"]
+[ext_resource type="Texture2D" uid="uid://ca2tl17580yk3" path="res://assets/items/coffee_box.png" id="4_uyjlx"]
+[ext_resource type="Texture2D" uid="uid://d0l6u36hhflhy" path="res://assets/items/bullet.png" id="5_m30a0"]
+[ext_resource type="Texture2D" uid="uid://blrjn85xhprv4" path="res://assets/items/key/keys_1_1.png" id="6_hypf7"]
+[ext_resource type="Texture2D" uid="uid://dk2a3ssgx6dif" path="res://assets/items/coin/coin_1.png" id="7_x2ow5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2uek"]
+bg_color = Color(1, 0.839216, 0.662745, 0.603922)
+
+[node name="Panel" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -74.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s2uek")
+
+[node name="Health" type="Sprite2D" parent="."]
+position = Vector2(36, 685)
+scale = Vector2(3, 3)
+texture = ExtResource("1_dxwyy")
+
+[node name="BoostHealth" type="Sprite2D" parent="."]
+position = Vector2(269, 669)
+texture = ExtResource("2_50hqy")
+
+[node name="BoostShots" type="Sprite2D" parent="."]
+position = Vector2(445, 668)
+texture = ExtResource("3_ynwkf")
+
+[node name="BoostSpeed" type="Sprite2D" parent="."]
+position = Vector2(357, 669)
+texture = ExtResource("4_uyjlx")
+
+[node name="Bullets" type="Sprite2D" parent="."]
+position = Vector2(645, 665)
+scale = Vector2(2, 2)
+texture = ExtResource("5_m30a0")
+
+[node name="Keys" type="Sprite2D" parent="."]
+position = Vector2(930, 682)
+scale = Vector2(3, 3)
+texture = ExtResource("6_hypf7")
+
+[node name="Coins" type="Sprite2D" parent="."]
+position = Vector2(755, 665)
+scale = Vector2(3, 3)
+texture = ExtResource("7_x2ow5")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 75.0
+offset_top = 660.0
+offset_right = 117.0
+offset_bottom = 715.0
+theme_override_font_sizes/font_size = 40
+text = "X"
+
+[node name="BoostHealthLabel" type="Label" parent="."]
+offset_left = 264.0
+offset_top = 693.0
+offset_right = 303.0
+offset_bottom = 734.0
+text = "X"
+
+[node name="BoostSpeedLabel" type="Label" parent="."]
+offset_left = 349.0
+offset_top = 695.0
+offset_right = 369.0
+offset_bottom = 730.0
+text = "X"
+
+[node name="BoostShotsLabel" type="Label" parent="."]
+offset_left = 429.0
+offset_top = 686.0
+offset_right = 469.0
+offset_bottom = 736.0
+text = "X"
+
+[node name="CoinsLabel" type="Label" parent="."]
+offset_left = 747.0
+offset_top = 698.0
+offset_right = 787.0
+offset_bottom = 721.0
+text = "X"
+
+[node name="BulletsLabel" type="Label" parent="."]
+offset_left = 624.0
+offset_top = 686.0
+offset_right = 664.0
+offset_bottom = 709.0
+text = "X"
+
+[node name="KeysLabel" type="Label" parent="."]
+offset_left = 864.0
+offset_top = 681.0
+offset_right = 904.0
+offset_bottom = 704.0
+text = "X"
