@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5semts736o5q"]
+[gd_scene load_steps=24 format=3 uid="uid://5semts736o5q"]
 
 [ext_resource type="PackedScene" uid="uid://bqy67u7uiuawe" path="res://scenes/world.tscn" id="1_opego"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_v4iix"]
@@ -9,12 +9,20 @@
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="7_32gwb"]
 [ext_resource type="PackedScene" uid="uid://qrrs7t0illg5" path="res://scenes/goblin_spawner_W_1.tscn" id="7_o2w8w"]
 [ext_resource type="PackedScene" uid="uid://b4b42quhvxf1x" path="res://scenes/peaks_W_1.tscn" id="8_dwv40"]
+[ext_resource type="PackedScene" uid="uid://yq1upyfe2yc6" path="res://scenes/goblin_spawner_W_2.tscn" id="10_jf1vg"]
 [ext_resource type="PackedScene" uid="uid://cvghruc1g0kir" path="res://scenes/door_1.tscn" id="10_sol41"]
+[ext_resource type="PackedScene" uid="uid://cdyjly7xlfmoi" path="res://scenes/goblin_spawner_S_1.tscn" id="11_0xaon"]
 [ext_resource type="PackedScene" uid="uid://fh6wq4evkbr6" path="res://scenes/door_2.tscn" id="11_i28f7"]
+[ext_resource type="PackedScene" uid="uid://cvu0eya5ak3vn" path="res://scenes/goblin_spawner_S_2.tscn" id="12_ficcc"]
 [ext_resource type="PackedScene" uid="uid://mafcrf0hfnff" path="res://scenes/door_3.tscn" id="12_owv43"]
-[ext_resource type="PackedScene" uid="uid://2riyp48408op" path="res://scenes/boss_template.tscn" id="13_7yfex"]
+[ext_resource type="PackedScene" uid="uid://co6g6a8ihsqtm" path="res://scenes/goblin_spawner_S_3.tscn" id="13_cisge"]
 [ext_resource type="PackedScene" uid="uid://dvldiqbyasv6q" path="res://scenes/skull_bullet.tscn" id="13_uy6xu"]
+[ext_resource type="PackedScene" uid="uid://cial7b0bds0ch" path="res://scenes/goblin_spawner_E.tscn" id="14_mumi0"]
 [ext_resource type="PackedScene" uid="uid://hi6m0qairww8" path="res://scenes/menu.tscn" id="15_g1lcv"]
+[ext_resource type="PackedScene" uid="uid://6f4qipo1p7tn" path="res://scenes/boss_w.tscn" id="16_ltr65"]
+[ext_resource type="PackedScene" uid="uid://cwbukq0dxaxq2" path="res://scenes/boss_s.tscn" id="16_xasw3"]
+[ext_resource type="PackedScene" uid="uid://q5d4edsl6xg" path="res://scenes/boss_e.tscn" id="17_jblg1"]
+[ext_resource type="PackedScene" uid="uid://63bc66h4a8ng" path="res://scenes/main_boss_n.tscn" id="18_wnhy3"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_v4iix")
@@ -29,12 +37,28 @@ bullet_scene = ExtResource("4_sb4ue")
 skull_bullet_scene = ExtResource("13_uy6xu")
 
 [node name="Panel" parent="." instance=ExtResource("5_yabbq")]
+visible = false
 script = ExtResource("7_32gwb")
 
 [node name="Spawners" type="Node" parent="."]
 
 [node name="GoblinSpawner_W_1" parent="Spawners" instance=ExtResource("7_o2w8w")]
 position = Vector2(-723, 23)
+
+[node name="GoblinSpawner_W_2" parent="Spawners" instance=ExtResource("10_jf1vg")]
+position = Vector2(-796, 416)
+
+[node name="GoblinSpawner_S_1" parent="Spawners" instance=ExtResource("11_0xaon")]
+position = Vector2(-1508, 1327)
+
+[node name="GoblinSpawner_S_2" parent="Spawners" instance=ExtResource("12_ficcc")]
+position = Vector2(288, 932)
+
+[node name="GoblinSpawner_S_3" parent="Spawners" instance=ExtResource("13_cisge")]
+position = Vector2(1623, 1368)
+
+[node name="GoblinSpawner_E" parent="Spawners" instance=ExtResource("14_mumi0")]
+position = Vector2(1003, 359)
 
 [node name="Peaks" type="Node" parent="."]
 
@@ -52,10 +76,21 @@ position = Vector2(0, -560)
 [node name="Door3" parent="Door" instance=ExtResource("12_owv43")]
 position = Vector2(0, -660)
 
-[node name="BossTemplate" parent="." instance=ExtResource("13_7yfex")]
-position = Vector2(324, 9)
-
 [node name="Menu" parent="." instance=ExtResource("15_g1lcv")]
+
+[node name="Bosses" type="Node" parent="."]
+
+[node name="Boss_W" parent="Bosses" instance=ExtResource("16_ltr65")]
+position = Vector2(-1935, 157)
+
+[node name="Boss_S" parent="Bosses" instance=ExtResource("16_xasw3")]
+position = Vector2(-1502, 1626)
+
+[node name="Boss_E" parent="Bosses" instance=ExtResource("17_jblg1")]
+position = Vector2(2723, 185)
+
+[node name="MainBoss_N" parent="Bosses" instance=ExtResource("18_wnhy3")]
+position = Vector2(886, -1597)
 
 [connection signal="bullet_count_change" from="Player" to="Panel" method="_on_player_bullet_count_change"]
 [connection signal="coins_amount_change" from="Player" to="Panel" method="_on_player_coins_amount_change"]
@@ -63,4 +98,3 @@ position = Vector2(324, 9)
 [connection signal="item_amount_change" from="Player" to="Panel" method="_on_player_item_amount_change"]
 [connection signal="key_count_change" from="Player" to="Panel" method="_on_player_key_count_change"]
 [connection signal="shooting" from="Player" to="BulletManager" method="_on_player_shooting"]
-[connection signal="shooting_skull" from="BossTemplate" to="BulletManager" method="_on_bosses_shooting_skull"]

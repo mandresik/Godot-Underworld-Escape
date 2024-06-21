@@ -99,6 +99,7 @@ grow_vertical = 2
 script = ExtResource("1_iy0qy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 8
@@ -115,6 +116,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b12gw")
 
 [node name="ButtonPanel" type="Panel" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 50.0
 offset_top = 30.0
 offset_right = 310.0
@@ -140,6 +142,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Play"
 
 [node name="ButtonQuit" type="Button" parent="CanvasLayer/Panel/ButtonPanel"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 210.0
 offset_right = 240.0
@@ -156,6 +159,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4n2bh")
 text = "Quit"
 
 [node name="ButtonRestart" type="Button" parent="CanvasLayer/Panel/ButtonPanel"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 130.0
 offset_right = 240.0
@@ -188,6 +192,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q31lo")
 
 [node name="Btn_1_Bullets" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 20.0
 offset_right = 430.0
@@ -205,6 +210,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
 [node name="Btn_4_Speed_boost" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 164.0
 offset_right = 430.0
@@ -222,6 +228,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
 [node name="Btn_3_Overall_Speed" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 116.0
 offset_right = 430.0
@@ -239,6 +246,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
 [node name="Btn_6_Fire_boost" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 260.0
 offset_right = 430.0
@@ -256,6 +264,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
 [node name="Btn_5_Bullet_damage" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 212.0
 offset_right = 430.0
@@ -273,6 +282,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
 [node name="Btn_2_Health" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 68.0
 offset_right = 430.0
@@ -302,6 +312,7 @@ text = "1  -  Bullets"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 68.0
 offset_right = 280.0
@@ -313,6 +324,7 @@ text = "5  -  Health"
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 212.0
 offset_right = 280.0
@@ -324,6 +336,7 @@ text = "5  -  Bullet damage"
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 260.0
 offset_right = 280.0
@@ -335,6 +348,7 @@ text = "5  -  Fire boost"
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 116.0
 offset_right = 280.0
@@ -346,6 +360,7 @@ text = "5  -  Overall speed"
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="CanvasLayer/Panel/ShopPanel"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 164.0
 offset_right = 280.0

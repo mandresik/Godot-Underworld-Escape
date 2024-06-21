@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://qrrs7t0illg5"]
+[gd_scene load_steps=3 format=3 uid="uid://yq1upyfe2yc6"]
 
-[ext_resource type="Script" path="res://scripts/GoblinSpawner_10.gd" id="1_ceon2"]
+[ext_resource type="Script" path="res://scripts/GoblinSpawner.gd" id="1_r3fv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14nob"]
-size = Vector2(915.5, 302)
+size = Vector2(186, 421)
 
-[node name="GoblinSpawner_W_1" type="Node2D"]
-script = ExtResource("1_ceon2")
+[node name="GoblinSpawnerTemplate" type="Node2D"]
+position = Vector2(500, 0)
+script = ExtResource("1_r3fv4")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -16,14 +17,11 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(42.25, 97)
+position = Vector2(-283, -3.5)
 shape = SubResource("RectangleShape2D_14nob")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(30, 96)
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-21, -142)
+position = Vector2(0, 4)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
