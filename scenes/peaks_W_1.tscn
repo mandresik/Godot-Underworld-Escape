@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4b42quhvxf1x"]
+
+[ext_resource type="Script" path="res://scripts/Peaks.gd" id="1_w5ucg"]
+[ext_resource type="Texture2D" uid="uid://c1oncosi2w4qd" path="res://assets/traps/peaks/peaks_3.png" id="2_6raj4"]
+[ext_resource type="Texture2D" uid="uid://b6b0xbh5yby6a" path="res://assets/traps/peaks/peaks_4.png" id="3_7pmjb"]
+[ext_resource type="Texture2D" uid="uid://dy53ul6jf5nm2" path="res://assets/traps/peaks/peaks_2.png" id="4_lqxe6"]
+[ext_resource type="Texture2D" uid="uid://ccbq52oqioc1p" path="res://assets/traps/peaks/peaks_1.png" id="5_3fu4h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uw73o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6raj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7pmjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lqxe6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3fu4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lqxe6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7pmjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6raj4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bh4u"]
+size = Vector2(10, 42)
+
+[node name="PeaksTemplate" type="Area2D"]
+position = Vector2(-960, 8)
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_w5ucg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uw73o")
+frame = 6
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_uw73o")
+frame = 6
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_uw73o")
+frame = 6
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3bh4u")
+
+[node name="DeactivePeaksTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D3" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="DeactivePeaksTimer" to="." method="_on_deactive_peaks_timer_timeout"]

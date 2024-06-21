@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://qrrs7t0illg5"]
+[gd_scene load_steps=3 format=3 uid="uid://ceuvvcqboocac"]
 
-[ext_resource type="Script" path="res://scripts/GoblinSpawner.gd" id="1_corv1"]
+[ext_resource type="Script" path="res://scripts/GoblinSpawner.gd" id="1_r3fv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14nob"]
 size = Vector2(842, 220)
 
-[node name="GoblinSpawner" type="Node2D"]
-script = ExtResource("1_corv1")
+[node name="GoblinSpawnerTemplate" type="Node2D"]
+position = Vector2(500, 0)
+script = ExtResource("1_r3fv4")
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -15,3 +15,5 @@ const GOBLIN_DROP_CHANCE : float = 0.15
 const INIT_GOBLIN_SPEED : int = 100
 const GOBLIN_SPAWNING_TIME : float = 0.7
 const SPAWNED_GOBLINS_AMOUNT : int = 5
+
+const INACTIVE_PEAKS_TIME : float = 1.0

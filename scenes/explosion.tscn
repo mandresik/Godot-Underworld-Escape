@@ -21,5 +21,5 @@ initial_velocity_max = 110.0
 scale_amount_min = 10.0
 scale_amount_max = 13.0
 scale_amount_curve = SubResource("Curve_ahb4r")
-color = Color(0.38987, 1, 0.400061, 1)
+color = Color(1.20628e-06, 0.225675, 0.0149725, 1)
 script = ExtResource("1_khvj1")

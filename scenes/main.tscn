@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://5semts736o5q"]
+[gd_scene load_steps=9 format=3 uid="uid://5semts736o5q"]
 
 [ext_resource type="PackedScene" uid="uid://bqy67u7uiuawe" path="res://scenes/world.tscn" id="1_opego"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_v4iix"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" path="res://scripts/BulletManager.gd" id="3_x1nsi"]
 [ext_resource type="PackedScene" uid="uid://bngqwklgqhm3k" path="res://scenes/bullet.tscn" id="4_sb4ue"]
 [ext_resource type="PackedScene" uid="uid://tf26e8gyhe8x" path="res://scenes/panel.tscn" id="5_yabbq"]
-[ext_resource type="PackedScene" uid="uid://qrrs7t0illg5" path="res://scenes/goblin_spawner.tscn" id="7_o2w8w"]
+[ext_resource type="PackedScene" uid="uid://qrrs7t0illg5" path="res://scenes/goblin_spawner_W_1.tscn" id="7_o2w8w"]
+[ext_resource type="PackedScene" uid="uid://b4b42quhvxf1x" path="res://scenes/peaks_W_1.tscn" id="8_dwv40"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_v4iix")
@@ -21,7 +22,14 @@ bullet_scene = ExtResource("4_sb4ue")
 
 [node name="Panel" parent="." instance=ExtResource("5_yabbq")]
 
-[node name="GoblinSpawner" parent="." instance=ExtResource("7_o2w8w")]
+[node name="Spawners" type="Node" parent="."]
+
+[node name="GoblinSpawner_W_1" parent="Spawners" instance=ExtResource("7_o2w8w")]
 position = Vector2(-723, 23)
+
+[node name="Peaks" type="Node" parent="."]
+
+[node name="Peaks_W_1" parent="Peaks" instance=ExtResource("8_dwv40")]
+position = Vector2(-936, 24)
 
 [connection signal="shooting" from="Player" to="BulletManager" method="_on_player_shooting"]
