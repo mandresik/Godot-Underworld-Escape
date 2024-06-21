@@ -139,7 +139,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Play"
 
-[node name="ButtonRestart" type="Button" parent="CanvasLayer/Panel/ButtonPanel"]
+[node name="ButtonQuit" type="Button" parent="CanvasLayer/Panel/ButtonPanel"]
 offset_left = 20.0
 offset_top = 210.0
 offset_right = 240.0
@@ -155,7 +155,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_4n2bh")
 text = "Quit"
 
-[node name="ButtonQuit" type="Button" parent="CanvasLayer/Panel/ButtonPanel"]
+[node name="ButtonRestart" type="Button" parent="CanvasLayer/Panel/ButtonPanel"]
 offset_left = 20.0
 offset_top = 130.0
 offset_right = 240.0
@@ -402,9 +402,17 @@ text = "Fight your way from the Underworld!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ToGameTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="button_down" from="CanvasLayer/Panel/ButtonPanel/ButtonPlay" to="." method="_on_button_play_button_down"]
+[connection signal="button_down" from="CanvasLayer/Panel/ButtonPanel/ButtonQuit" to="." method="_on_button_quit_button_down"]
+[connection signal="button_down" from="CanvasLayer/Panel/ButtonPanel/ButtonRestart" to="." method="_on_button_restart_button_down"]
 [connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_1_Bullets" to="." method="_on_btn_1_bullets_button_down"]
 [connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_4_Speed_boost" to="." method="_on_btn_4_speed_boost_button_down"]
 [connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_3_Overall_Speed" to="." method="_on_btn_3_overall_speed_button_down"]
 [connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_6_Fire_boost" to="." method="_on_btn_6_fire_boost_button_down"]
 [connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_5_Bullet_damage" to="." method="_on_btn_5_bullet_damage_button_down"]
 [connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_2_Health" to="." method="_on_btn_2_health_button_down"]
+[connection signal="timeout" from="ToGameTimer" to="." method="_on_to_game_timer_timeout"]

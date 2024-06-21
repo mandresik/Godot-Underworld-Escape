@@ -5,8 +5,10 @@ extends Node2D
 
 var damage : int 
 
+
 func _ready():
-	damage = 1
+	damage = Settings.INIT_BULLET_DAMAGE
+
 
 func increase_damage():
 	damage += 1
@@ -17,7 +19,7 @@ func _on_player_shooting(pos, dir):
 	bullet.damage = damage
 	bullet.position = pos
 	bullet.direction = dir.normalized()
-	add_child(bullet)
+	call_deferred("add_child", bullet)
 
 
 func _on_bosses_shooting_skull(pos, dir):

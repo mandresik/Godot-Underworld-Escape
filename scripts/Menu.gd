@@ -11,11 +11,26 @@ func _ready():
 	increasing_speed_counter = 0
 	increasing_damage_counter = 0
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	pause_game()
 
 
 func _input(event):
-	pass
-	
+	if event.is_action_pressed("menu"):
+		if get_tree().paused:
+			resume_game()
+		else:
+			pause_game()
+
+
+func resume_game():
+	$CanvasLayer.visible = false
+	$ToGameTimer.start()
+
+
+func pause_game():
+	$CanvasLayer.visible = true
+	get_tree().paused = true
+
 
 func _on_btn_1_bullets_button_down():
 	var amount : int = int($CanvasLayer/Panel/ShopPanel/amountText.text)
@@ -39,6 +54,7 @@ func _on_btn_3_overall_speed_button_down():
 			$CanvasLayer/Panel/ShopPanel/Btn_3_Overall_Speed.disabled = true
 			$CanvasLayer/Panel/ShopPanel/Btn_3_Overall_Speed.visible = false
 
+
 func _on_btn_4_speed_boost_button_down():
 	if player.coins >= Settings.COST_SPEED_BOOST:
 		player.subtract_coins(Settings.COST_SPEED_BOOST)
@@ -59,3 +75,19 @@ func _on_btn_6_fire_boost_button_down():
 	if player.coins >= Settings.COST_FIRE_BOOST:
 		player.subtract_coins(Settings.COST_FIRE_BOOST)
 		player.add_item_shots(1)
+
+
+func _on_button_play_button_down():
+	resume_game()
+
+
+func _on_button_restart_button_down():
+	get_tree().reload_current_scene()
+
+
+func _on_button_quit_button_down():
+	get_tree().quit()
+
+
+func _on_to_game_timer_timeout():
+	get_tree().paused = false

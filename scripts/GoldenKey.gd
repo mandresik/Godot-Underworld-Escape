@@ -7,5 +7,5 @@ func _ready():
 
 func _on_body_entered(body):
 	# interacts only with player
-	body.add_key()
+	body.add_key(1)
 	queue_free()

@@ -1,13 +1,12 @@
 extends Area2D
 
 var speed : int
-var damage : int
-var direction : Vector2
+var damage : int  # set in Bullet Manager
+var direction : Vector2  # set in Bullet Manager
 
 
 func _ready():
 	speed = Settings.INIT_BULLET_SPEED
-	damage = Settings.INIT_BULLET_DAMAGE
 
 
 func _process(delta):
