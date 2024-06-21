@@ -6,7 +6,14 @@ var can_shoot : bool
 var health : int
 var bullet_count : int
 
-signal shooting
+var item_health_amount : int = 0
+var item_speed_amount : int = 0
+var item_shots_amount : int = 0
+
+signal shooting # signal emitted to BulletManager
+signal bullet_count_change # signal emitted to Panel
+signal item_amount_change # signal emitted to Panel
+signal health_change # signal emitted to Panel
 
 
 func _ready():
@@ -20,6 +27,8 @@ func _ready():
 func _physics_process(_delta):
 	# player movement
 	handle_keyboard_movement()
+	# player boosting
+	handle_keyboard_boosting()
 	# player rotation 
 	handle_mouse_rotation()
 	# player shooting
@@ -31,6 +40,15 @@ func handle_keyboard_movement():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * speed 
 	move_and_slide()
+
+
+func handle_keyboard_boosting():
+	if Input.is_action_just_pressed("key_boost_health"):
+		boost_health()
+	if Input.is_action_just_pressed("key_boost_speed"):
+		boost_speed_effect()
+	if Input.is_action_just_pressed("key_boost_shots"):
+		boost_shots_effect()
 
 
 func handle_mouse_rotation():
@@ -54,10 +72,33 @@ func handle_mouse_click():
 			can_shoot = false
 			$ShootingTimer.start()
 			bullet_count -= 1
+			bullet_count_change.emit(bullet_count)
 
 
 func _on_shooting_timer_timeout():
 	can_shoot = true
 
 
+func emit_item_amount_change():
+	item_amount_change.emit(item_health_amount, item_speed_amount, item_shots_amount)
 
+
+func subtract_health(amount: int):
+	health -= amount
+	health_change.emit(health)
+
+
+func boost_health():
+	if item_health_amount > 0: 
+		health += 1
+		item_health_amount -= 1
+		health_change.emit(health)
+		emit_item_amount_change()
+
+
+func boost_speed_effect():
+	pass
+
+
+func boost_shots_effect():
+	pass

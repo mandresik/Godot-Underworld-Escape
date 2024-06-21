@@ -5,7 +5,7 @@ var in_hurting_area : bool
 var inactive_time : float
 var animations := []
 
-@onready var main = get_node("/root/Main")
+@onready var player = get_node("/root/Main/Player")
 
 # animation is set NOT to loop, timer handles looping
 
@@ -45,8 +45,7 @@ func _on_deactive_peaks_timer_timeout():
 
 
 func hurt():
-	print("peaks hurting")
-	main.subtract_health(1)
+	player.subtract_health(1)
 
 
 

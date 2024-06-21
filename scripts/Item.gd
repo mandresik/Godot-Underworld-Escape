@@ -14,5 +14,9 @@ func _ready():
 
 
 func _on_body_entered(body):
-	# TODO item_type -> body.some_action()
+	# interacts only with player
+	if item_type == 0: body.item_health_amount += 1
+	if item_type == 1: body.item_speed_amount += 1
+	if item_type == 2: body.item_shots_amount += 1
+	body.emit_item_amount_change()
 	queue_free()

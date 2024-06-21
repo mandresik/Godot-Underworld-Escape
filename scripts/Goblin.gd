@@ -39,7 +39,7 @@ func _on_idle_timer_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		main.subtract_health(1)
+		player.subtract_health(1)
 		queue_free()
 
 
