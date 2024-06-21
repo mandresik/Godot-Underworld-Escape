@@ -20,3 +20,11 @@ const INACTIVE_PEAKS_TIME : float = 0.5
 
 const MINIBOSS_RETREAT_TIME : float = 1.0
 const MINIBOSS_RETREATING_SPEED : int = 100
+
+const COST_HEALTH : int = 5
+const COST_OVERALL_SPEED : int = 5
+const COST_SPEED_BOOST : int = 5
+const COST_BULLET_DAMAGE : int = 5
+const COST_FIRE_BOOST : int = 5
+const MAX_SPEED_INCREMENT_COUNT : int = 2
+const MAX_BULLET_DAMAGE_INCREMENT_COUNT : int = 2

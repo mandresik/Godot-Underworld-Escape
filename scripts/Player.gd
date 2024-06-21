@@ -6,7 +6,7 @@ var can_shoot : bool
 var health : int
 var bullet_count : int
 
-var coins : int = 0
+var coins : int = 200
 var keys : int = 0
 var item_health_amount : int = 0
 var item_speed_amount : int = 0
@@ -110,8 +110,12 @@ func boost_speed_effect():
 
 func boost_shots_effect():
 	pass
-	
-	
+
+
+func increase_overall_speed():
+	pass
+
+
 func add_coins(amount: int):
 	coins += amount
 	coins_amount_change.emit(coins)
@@ -122,7 +126,28 @@ func subtract_key(count : int):
 	key_count_change.emit(keys)
 
 
-func add_key(): subtract_key(-1)
+func add_key(count: int): subtract_key(-count)
+
+
+func subtract_coins(amount: int): add_coins(-amount)
+
+
+func add_bullets(amount: int):
+	bullet_count += amount
+	bullet_count_change.emit(bullet_count)
+
+
+func add_health(amount: int): subtract_health(-amount)
+
+
+func add_item_speed(amount: int):
+	item_speed_amount += amount
+	emit_item_amount_change()
+
+
+func add_item_shots(amount: int):
+	item_shots_amount += amount
+	emit_item_amount_change()
 
 
 func die():

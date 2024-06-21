@@ -3,10 +3,18 @@ extends Node2D
 @export var bullet_scene : PackedScene
 @export var skull_bullet_scene : PackedScene
 
+var damage : int 
+
+func _ready():
+	damage = 1
+
+func increase_damage():
+	damage += 1
 
 
 func _on_player_shooting(pos, dir):
 	var bullet = bullet_scene.instantiate()
+	bullet.damage = damage
 	bullet.position = pos
 	bullet.direction = dir.normalized()
 	add_child(bullet)

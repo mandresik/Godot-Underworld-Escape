@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://hi6m0qairww8"]
+[gd_scene load_steps=10 format=3 uid="uid://hi6m0qairww8"]
 
 [ext_resource type="FontFile" uid="uid://53mc8y7oxube" path="res://fonts/november/novem___.ttf" id="1_dessg"]
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_iy0qy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b12gw"]
 bg_color = Color(0.788235, 0.788235, 0.788235, 0.560784)
@@ -95,6 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_iy0qy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -202,7 +204,7 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
-[node name="Btn_2_Health" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+[node name="Btn_4_Speed_boost" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
 offset_left = 350.0
 offset_top = 164.0
 offset_right = 430.0
@@ -236,7 +238,7 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
-[node name="Btn_4_Speed_boost" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+[node name="Btn_6_Fire_boost" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
 offset_left = 350.0
 offset_top = 260.0
 offset_right = 430.0
@@ -270,7 +272,7 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_0enyy")
 text = "Buy"
 
-[node name="Btn_6_Fire_boost" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
+[node name="Btn_2_Health" type="Button" parent="CanvasLayer/Panel/ShopPanel"]
 offset_left = 350.0
 offset_top = 68.0
 offset_right = 430.0
@@ -399,3 +401,10 @@ theme_override_font_sizes/font_size = 30
 text = "Fight your way from the Underworld!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_1_Bullets" to="." method="_on_btn_1_bullets_button_down"]
+[connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_4_Speed_boost" to="." method="_on_btn_4_speed_boost_button_down"]
+[connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_3_Overall_Speed" to="." method="_on_btn_3_overall_speed_button_down"]
+[connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_6_Fire_boost" to="." method="_on_btn_6_fire_boost_button_down"]
+[connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_5_Bullet_damage" to="." method="_on_btn_5_bullet_damage_button_down"]
+[connection signal="button_down" from="CanvasLayer/Panel/ShopPanel/Btn_2_Health" to="." method="_on_btn_2_health_button_down"]
