@@ -44,6 +44,7 @@ func _on_area_2d_body_entered(body):
 
 
 func die():
+	player.add_coins(1)
 	if randf() <= Settings.GOBLIN_DROP_CHANCE: drop_item()
 	var explosion = explosion_scene.instantiate()
 	explosion.position = position

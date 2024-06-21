@@ -6,6 +6,7 @@ var can_shoot : bool
 var health : int
 var bullet_count : int
 
+var coins : int = 0
 var item_health_amount : int = 0
 var item_speed_amount : int = 0
 var item_shots_amount : int = 0
@@ -14,6 +15,7 @@ signal shooting # signal emitted to BulletManager
 signal bullet_count_change # signal emitted to Panel
 signal item_amount_change # signal emitted to Panel
 signal health_change # signal emitted to Panel
+signal coins_amount_change # signal emitted to Panel
 
 
 func _ready():
@@ -102,3 +104,7 @@ func boost_speed_effect():
 
 func boost_shots_effect():
 	pass
+
+func add_coins(amount: int):
+	coins += amount
+	coins_amount_change.emit(coins)

@@ -35,6 +35,7 @@ position = Vector2(-723, 23)
 position = Vector2(-936, 24)
 
 [connection signal="bullet_count_change" from="Player" to="Panel" method="_on_player_bullet_count_change"]
+[connection signal="coins_amount_change" from="Player" to="Panel" method="_on_player_coins_amount_change"]
 [connection signal="health_change" from="Player" to="Panel" method="_on_player_health_change"]
 [connection signal="item_amount_change" from="Player" to="Panel" method="_on_player_item_amount_change"]
 [connection signal="shooting" from="Player" to="BulletManager" method="_on_player_shooting"]
