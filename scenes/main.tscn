@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://5semts736o5q"]
+[gd_scene load_steps=27 format=3 uid="uid://5semts736o5q"]
 
 [ext_resource type="PackedScene" uid="uid://bqy67u7uiuawe" path="res://scenes/world.tscn" id="1_opego"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_v4iix"]
@@ -19,10 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://dvldiqbyasv6q" path="res://scenes/skull_bullet.tscn" id="13_uy6xu"]
 [ext_resource type="PackedScene" uid="uid://cial7b0bds0ch" path="res://scenes/goblin_spawner_E.tscn" id="14_mumi0"]
 [ext_resource type="PackedScene" uid="uid://hi6m0qairww8" path="res://scenes/menu.tscn" id="15_g1lcv"]
+[ext_resource type="PackedScene" uid="uid://xrfe4jjgael1" path="res://scenes/peaks_S_1.tscn" id="16_6qem8"]
 [ext_resource type="PackedScene" uid="uid://6f4qipo1p7tn" path="res://scenes/boss_w.tscn" id="16_ltr65"]
 [ext_resource type="PackedScene" uid="uid://cwbukq0dxaxq2" path="res://scenes/boss_s.tscn" id="16_xasw3"]
 [ext_resource type="PackedScene" uid="uid://q5d4edsl6xg" path="res://scenes/boss_e.tscn" id="17_jblg1"]
+[ext_resource type="PackedScene" uid="uid://05lgfn2txmic" path="res://scenes/peaks_S_2.tscn" id="17_tlmqu"]
 [ext_resource type="PackedScene" uid="uid://63bc66h4a8ng" path="res://scenes/main_boss_n.tscn" id="18_wnhy3"]
+[ext_resource type="PackedScene" uid="uid://dmhn1p1k0dc8n" path="res://scenes/peaks_S_3.tscn" id="18_yhr8f"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_v4iix")
@@ -37,7 +40,6 @@ bullet_scene = ExtResource("4_sb4ue")
 skull_bullet_scene = ExtResource("13_uy6xu")
 
 [node name="Panel" parent="." instance=ExtResource("5_yabbq")]
-visible = false
 script = ExtResource("7_32gwb")
 
 [node name="Spawners" type="Node" parent="."]
@@ -65,6 +67,30 @@ position = Vector2(1003, 359)
 [node name="Peaks_W_1" parent="Peaks" instance=ExtResource("8_dwv40")]
 position = Vector2(-936, 24)
 
+[node name="Peaks_S_1" parent="Peaks" instance=ExtResource("16_6qem8")]
+position = Vector2(72, 1464)
+
+[node name="Peaks_S_2" parent="Peaks" instance=ExtResource("17_tlmqu")]
+position = Vector2(888, 1368)
+
+[node name="Peaks_S_3" parent="Peaks" instance=ExtResource("18_yhr8f")]
+position = Vector2(72, 1176)
+
+[node name="Peaks_S_4" parent="Peaks" instance=ExtResource("18_yhr8f")]
+position = Vector2(72, 840)
+
+[node name="Peaks_S_5" parent="Peaks" instance=ExtResource("18_yhr8f")]
+position = Vector2(-120, 984)
+
+[node name="Peaks_S_6" parent="Peaks" instance=ExtResource("18_yhr8f")]
+position = Vector2(312, 1272)
+
+[node name="Peaks_E_1" parent="Peaks" instance=ExtResource("8_dwv40")]
+position = Vector2(408, 24)
+
+[node name="Peaks_E_2" parent="Peaks" instance=ExtResource("8_dwv40")]
+position = Vector2(503, 24)
+
 [node name="Door" type="Node" parent="."]
 
 [node name="Door1" parent="Door" instance=ExtResource("10_sol41")]
@@ -77,6 +103,10 @@ position = Vector2(0, -560)
 position = Vector2(0, -660)
 
 [node name="Menu" parent="." instance=ExtResource("15_g1lcv")]
+offset_left = -12.0
+offset_top = 63.0
+offset_right = -12.0
+offset_bottom = 63.0
 
 [node name="Bosses" type="Node" parent="."]
 
