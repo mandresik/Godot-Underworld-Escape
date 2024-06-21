@@ -27,3 +27,7 @@ func _on_player_health_change(curr_amount: int):
 
 func _on_player_coins_amount_change(curr_amount: int):
 	$CoinsLabel.text = str(curr_amount)
+
+
+func _on_player_key_count_change(curr_count: int):
+	$KeysLabel.text = str(curr_count)

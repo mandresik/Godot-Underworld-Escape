@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5semts736o5q"]
+[gd_scene load_steps=13 format=3 uid="uid://5semts736o5q"]
 
 [ext_resource type="PackedScene" uid="uid://bqy67u7uiuawe" path="res://scenes/world.tscn" id="1_opego"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_v4iix"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="7_32gwb"]
 [ext_resource type="PackedScene" uid="uid://qrrs7t0illg5" path="res://scenes/goblin_spawner_W_1.tscn" id="7_o2w8w"]
 [ext_resource type="PackedScene" uid="uid://b4b42quhvxf1x" path="res://scenes/peaks_W_1.tscn" id="8_dwv40"]
+[ext_resource type="PackedScene" uid="uid://cvghruc1g0kir" path="res://scenes/door_1.tscn" id="10_sol41"]
+[ext_resource type="PackedScene" uid="uid://fh6wq4evkbr6" path="res://scenes/door_2.tscn" id="11_i28f7"]
+[ext_resource type="PackedScene" uid="uid://mafcrf0hfnff" path="res://scenes/door_3.tscn" id="12_owv43"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_v4iix")
@@ -34,8 +37,20 @@ position = Vector2(-723, 23)
 [node name="Peaks_W_1" parent="Peaks" instance=ExtResource("8_dwv40")]
 position = Vector2(-936, 24)
 
+[node name="Node" type="Node" parent="."]
+
+[node name="Door1" parent="Node" instance=ExtResource("10_sol41")]
+position = Vector2(0, -460)
+
+[node name="Door2" parent="Node" instance=ExtResource("11_i28f7")]
+position = Vector2(0, -560)
+
+[node name="Door3" parent="Node" instance=ExtResource("12_owv43")]
+position = Vector2(0, -660)
+
 [connection signal="bullet_count_change" from="Player" to="Panel" method="_on_player_bullet_count_change"]
 [connection signal="coins_amount_change" from="Player" to="Panel" method="_on_player_coins_amount_change"]
 [connection signal="health_change" from="Player" to="Panel" method="_on_player_health_change"]
 [connection signal="item_amount_change" from="Player" to="Panel" method="_on_player_item_amount_change"]
+[connection signal="key_count_change" from="Player" to="Panel" method="_on_player_key_count_change"]
 [connection signal="shooting" from="Player" to="BulletManager" method="_on_player_shooting"]
