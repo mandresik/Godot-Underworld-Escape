@@ -10,13 +10,10 @@ func _on_player_shooting(pos, dir):
 	bullet.position = pos
 	bullet.direction = dir.normalized()
 	add_child(bullet)
-	
-	# bullet.add_to_group("bullets")
 
 
 func _on_bosses_shooting_skull(pos, dir):
 	var skull_bullet = skull_bullet_scene.instantiate()
 	skull_bullet.position = pos
 	skull_bullet.direction = dir.normalized()
-	add_child(skull_bullet)
-	
+	call_deferred("add_child", skull_bullet)

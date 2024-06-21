@@ -32,7 +32,7 @@ func _ready():
 	$ReloadingClipTimer.wait_time = 3
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if active:
 		direction = player.position - position
 		if retreating: 
@@ -55,14 +55,14 @@ func shoot_skull_bullet():
 
 
 
-func _on_wake_up_area_2d_body_entered(body):
+func _on_wake_up_area_2d_body_entered(_body):
 	# interacts only with player
 	active = true
 	$AnimatedSprite2D.play("run")
 	shoot()
 
 
-func _on_contact_area_2d_body_entered(body):
+func _on_contact_area_2d_body_entered(_body):
 	# interacts only with player
 	player.subtract_health(1)
 	retreating = true
@@ -89,7 +89,7 @@ func shoot():
 		$ReloadingClipTimer.start()
 	else:
 		$IntraClipTimer.start()
-	
+
 
 func die(): 
 	var key = key_scene.instantiate()
