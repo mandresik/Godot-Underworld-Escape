@@ -45,7 +45,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = velocity.x < 0
 		# keep eyes on player if fighting
 		if retreating:
-			$AnimatedSprite2D.flip_h = player.position < position
+			$AnimatedSprite2D.flip_h = player.position.x < position.x
 
 
 
