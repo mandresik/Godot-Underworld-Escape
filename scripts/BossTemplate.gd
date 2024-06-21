@@ -9,11 +9,13 @@ var retreating_speed : int
 var init_bullets_in_clip : int 
 var curr_bullets_in_clip : int
 
+@onready var main = get_node("/root/Main")
 @onready var player = get_node("/root/Main/Player")
 
 var key_scene := preload("res://scenes/golden_key.tscn")
 
 signal shooting_skull
+
 
 func _ready():
 	active = false
@@ -28,6 +30,7 @@ func _ready():
 	$AnimatedSprite2D.play("idle")
 	$IntraClipTimer.wait_time = 1
 	$ReloadingClipTimer.wait_time = 3
+
 
 func _physics_process(delta):
 	if active:
@@ -89,6 +92,9 @@ func shoot():
 	
 
 func die(): 
+	var key = key_scene.instantiate()
+	key.position = position
+	main.call_deferred("add_child", key)
 	queue_free()
 
 
