@@ -403,7 +403,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ToGameTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [connection signal="button_down" from="CanvasLayer/Panel/ButtonPanel/ButtonPlay" to="." method="_on_button_play_button_down"]

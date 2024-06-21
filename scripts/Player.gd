@@ -6,7 +6,7 @@ var can_shoot : bool
 var health : int
 var bullet_count : int
 
-var coins : int = 200
+var coins : int = 0
 var keys : int = 0
 var item_health_amount : int = 0
 var item_speed_amount : int = 0
@@ -28,7 +28,8 @@ func _ready():
 	$ShootingTimer.wait_time = Settings.INIT_SHOT_COOLDOWN
 	health = Settings.INIT_HEALTH
 	bullet_count = Settings.INIT_BULLET_COUNT
-
+	$BoostSpeedTimer.wait_time = Settings.BOOST_SPEED_TIME
+	$BoostShotsTimer.wait_time = Settings.BOOST_SHOTS_TIME
 
 func _physics_process(_delta):
 	# player movement
@@ -104,16 +105,34 @@ func boost_health():
 		emit_item_amount_change()
 
 
+var prev_speed : int
 func boost_speed_effect():
-	pass
+	if item_speed_amount > 0:
+		item_speed_amount -= 1
+		emit_item_amount_change()
+		prev_speed = speed
+		speed = Settings.PLAYER_MAX_SPEED
+		$BoostSpeedTimer.start()
+
+
+func _on_boost_speed_timer_timeout():
+	speed = prev_speed
 
 
 func boost_shots_effect():
-	pass
+	if item_shots_amount > 0:
+		item_shots_amount -= 1
+		emit_item_amount_change()
+		$ShootingTimer.wait_time = Settings.BEST_SHOT_COOLDOWN
+		$BoostShotsTimer.start()
+
+
+func _on_boost_shots_timer_timeout():
+	$ShootingTimer.wait_time = Settings.INIT_SHOT_COOLDOWN
 
 
 func increase_overall_speed():
-	pass
+	speed += Settings.PLAYER_SPEED_INCREMENT
 
 
 func add_coins(amount: int):
@@ -151,4 +170,11 @@ func add_item_shots(amount: int):
 
 
 func die():
-	print("player dies")
+	print("game over")
+	get_tree().reload_current_scene()
+
+
+
+
+
+

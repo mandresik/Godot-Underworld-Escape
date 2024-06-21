@@ -190,4 +190,12 @@ scale = Vector2(4, 4)
 [node name="ShootingTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="BoostSpeedTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BoostShotsTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
+[connection signal="timeout" from="BoostSpeedTimer" to="." method="_on_boost_speed_timer_timeout"]
+[connection signal="timeout" from="BoostShotsTimer" to="." method="_on_boost_shots_timer_timeout"]
