@@ -1,9 +1,11 @@
 extends Area2D
 
 
+func _ready():
+	$AnimatedSprite2D.play()
+
 
 func _on_body_entered(body):
 	# interacts only with player
-	if body.keys > 0:
-		body.subtract_key(1)
-		queue_free()
+	body.add_key()
+	queue_free()

@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://2riyp48408op"]
+
+[ext_resource type="Script" path="res://scripts/BossTemplate.gd" id="1_642ph"]
+[ext_resource type="Texture2D" uid="uid://csxwduylakj2d" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f0.png" id="1_u5je4"]
+[ext_resource type="Texture2D" uid="uid://8gocpc0f3eb2" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f1.png" id="2_mcy8d"]
+[ext_resource type="Texture2D" uid="uid://bg1e67i245ch0" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f2.png" id="3_c2m7f"]
+[ext_resource type="Texture2D" uid="uid://csoejtq328ouo" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f3.png" id="4_bofa7"]
+[ext_resource type="Texture2D" uid="uid://b3y5gi7rqejdn" path="res://assets/enemies/masked orc/masked_orc_run_anim_f0.png" id="5_ehin0"]
+[ext_resource type="Texture2D" uid="uid://dcxi6pso4x1me" path="res://assets/enemies/masked orc/masked_orc_run_anim_f1.png" id="6_61yey"]
+[ext_resource type="Texture2D" uid="uid://dw88guocighrd" path="res://assets/enemies/masked orc/masked_orc_run_anim_f2.png" id="7_0qse0"]
+[ext_resource type="Texture2D" uid="uid://blm1228cve4hd" path="res://assets/enemies/masked orc/masked_orc_run_anim_f3.png" id="8_xdnl4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xucp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u5je4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mcy8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c2m7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bofa7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ehin0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_61yey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0qse0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xdnl4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2to5"]
+size = Vector2(9.33333, 14.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mklx4"]
+size = Vector2(105, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c7gb"]
+size = Vector2(10, 15.25)
+
+[node name="BossTemplate" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_642ph")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xucp2")
+animation = &"run"
+frame_progress = 0.51756
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2.66667)
+shape = SubResource("RectangleShape2D_v2to5")
+
+[node name="WakeUpArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WakeUpArea2D"]
+position = Vector2(4.5, 3.16666)
+shape = SubResource("RectangleShape2D_mklx4")
+
+[node name="ContactArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea2D"]
+position = Vector2(1, 2.625)
+shape = SubResource("RectangleShape2D_5c7gb")
+
+[node name="RetreatingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="IntraClipTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadingClipTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="WakeUpArea2D" to="." method="_on_wake_up_area_2d_body_entered"]
+[connection signal="body_entered" from="ContactArea2D" to="." method="_on_contact_area_2d_body_entered"]
+[connection signal="timeout" from="RetreatingTimer" to="." method="_on_retreating_timer_timeout"]
+[connection signal="timeout" from="IntraClipTimer" to="." method="_on_intra_clip_timer_timeout"]
+[connection signal="timeout" from="ReloadingClipTimer" to="." method="_on_reloading_clip_timer_timeout"]

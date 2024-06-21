@@ -4,10 +4,9 @@
 [ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_rb7rl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ts1y0"]
-radius = 9.0
+radius = 5.0
 
 [node name="Bullet" type="Area2D"]
-z_index = 3
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_rb7rl")

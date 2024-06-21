@@ -92,6 +92,8 @@ func emit_item_amount_change():
 func subtract_health(amount: int):
 	health -= amount
 	health_change.emit(health)
+	if health == 0:
+		die()
 
 
 func boost_health():
@@ -108,12 +110,20 @@ func boost_speed_effect():
 
 func boost_shots_effect():
 	pass
-
+	
+	
 func add_coins(amount: int):
 	coins += amount
 	coins_amount_change.emit(coins)
 
 
-func subtract_key():
-	keys -= 1
+func subtract_key(count : int):
+	keys -= count
 	key_count_change.emit(keys)
+
+
+func add_key(): subtract_key(-1)
+
+
+func die():
+	print("player dies")

@@ -16,6 +16,7 @@ func _ready():
 	active = false
 	speed = Settings.INIT_GOBLIN_SPEED
 	health = 1
+	direction = Vector2.ZERO
 	$AnimatedSprite2D.play("idle")
 	$IdleTimer.wait_time = Settings.GOBLIN_IDLE_TIME
 	$IdleTimer.start()

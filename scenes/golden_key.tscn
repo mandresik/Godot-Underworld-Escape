@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://m2kwgqxws83h"]
+
+[ext_resource type="Texture2D" uid="uid://blrjn85xhprv4" path="res://assets/items/key/keys_1_1.png" id="1_8pubq"]
+[ext_resource type="Script" path="res://scripts/GoldenKey.gd" id="1_v7rxs"]
+[ext_resource type="Texture2D" uid="uid://d2dcam21sbul3" path="res://assets/items/key/keys_1_2.png" id="2_y3hay"]
+[ext_resource type="Texture2D" uid="uid://bfybyg6css1kl" path="res://assets/items/key/keys_1_3.png" id="3_rgqvk"]
+[ext_resource type="Texture2D" uid="uid://brrj7sxj234jv" path="res://assets/items/key/keys_1_4.png" id="4_k7j2a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1axp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8pubq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y3hay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rgqvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k7j2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl7lg"]
+radius = 22.0227
+
+[node name="GoldenKey" type="Area2D"]
+scale = Vector2(3, 3)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_v7rxs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y1axp")
+frame_progress = 0.766218
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tl7lg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

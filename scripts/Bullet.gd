@@ -15,7 +15,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body.name == "World":
+	if body.name == "World" or body is StaticBody2D:
 		queue_free()
 		return
 	# stronger from bullet vs body survives
