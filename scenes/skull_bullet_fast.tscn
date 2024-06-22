@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddojgrvir3mb7"]
+
+[ext_resource type="Script" path="res://scripts/SkullBulletFast.gd" id="1_i4jio"]
+[ext_resource type="Texture2D" uid="uid://b7oy5rpr6ll67" path="res://assets/items/skull bullet/skull_v2_1.png" id="2_lv2gx"]
+[ext_resource type="Texture2D" uid="uid://w56q0lfssug7" path="res://assets/items/skull bullet/skull_v2_2.png" id="3_ycj80"]
+[ext_resource type="Texture2D" uid="uid://cjh84m1jngonm" path="res://assets/items/skull bullet/skull_v2_3.png" id="4_y3y7l"]
+[ext_resource type="Texture2D" uid="uid://boi6mtsr3n3" path="res://assets/items/skull bullet/skull_v2_4.png" id="5_sg67p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ui87v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lv2gx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ycj80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y3y7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sg67p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ts1y0"]
+radius = 9.0
+
+[node name="SkullBulletFast" type="Area2D"]
+z_index = 3
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_i4jio")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_ui87v")
+frame = 3
+frame_progress = 0.208455
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ts1y0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

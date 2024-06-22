@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://5semts736o5q"]
+[gd_scene load_steps=32 format=3 uid="uid://5semts736o5q"]
 
 [ext_resource type="PackedScene" uid="uid://bqy67u7uiuawe" path="res://scenes/world.tscn" id="1_opego"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_v4iix"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/BulletManager.gd" id="3_x1nsi"]
 [ext_resource type="PackedScene" uid="uid://bngqwklgqhm3k" path="res://scenes/bullet.tscn" id="4_sb4ue"]
 [ext_resource type="PackedScene" uid="uid://tf26e8gyhe8x" path="res://scenes/panel.tscn" id="5_yabbq"]
+[ext_resource type="PackedScene" uid="uid://ddojgrvir3mb7" path="res://scenes/skull_bullet_fast.tscn" id="7_0ju3x"]
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="7_32gwb"]
 [ext_resource type="PackedScene" uid="uid://qrrs7t0illg5" path="res://scenes/goblin_spawner_W_1.tscn" id="7_o2w8w"]
 [ext_resource type="PackedScene" uid="uid://b4b42quhvxf1x" path="res://scenes/peaks_W_1.tscn" id="8_dwv40"]
@@ -42,6 +43,7 @@ script = ExtResource("1_v4iix")
 script = ExtResource("3_x1nsi")
 bullet_scene = ExtResource("4_sb4ue")
 skull_bullet_scene = ExtResource("13_uy6xu")
+fast_skull_bullet_scene = ExtResource("7_0ju3x")
 
 [node name="Panel" parent="." instance=ExtResource("5_yabbq")]
 script = ExtResource("7_32gwb")
