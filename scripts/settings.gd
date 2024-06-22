@@ -35,3 +35,8 @@ const MAX_BULLET_DAMAGE_INCREMENT_COUNT : int = 2
 
 const BOOST_SPEED_TIME : float = 5.0
 const BOOST_SHOTS_TIME : float = 4.0
+
+const BOSS_W_SKULL_SPEED : int = 270
+const BOSS_S_SKULL_SPEED : int = 270
+const BOSS_E_SKULL_SPEED : int = 270
+const BOSS_N_SKULL_SPEED : int = 380
