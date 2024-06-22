@@ -22,8 +22,21 @@ func _on_player_shooting(pos, dir):
 	call_deferred("add_child", bullet)
 
 
-func _on_bosses_shooting_skull(pos, dir):
+func shoot_skull(pos, dir):
 	var skull_bullet = skull_bullet_scene.instantiate()
 	skull_bullet.position = pos
 	skull_bullet.direction = dir.normalized()
 	call_deferred("add_child", skull_bullet)
+
+
+func _on_boss_w_shooting_skull(pos, dir):
+	shoot_skull(pos, dir)
+
+func _on_boss_s_shooting_skull(pos, dir):
+	shoot_skull(pos, dir)
+
+func _on_boss_e_shooting_skull(pos, dir):
+	shoot_skull(pos, dir)
+
+func _on_main_boss_n_shooting_skull(pos, dir):
+	shoot_skull(pos, dir)

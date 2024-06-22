@@ -1,29 +1,29 @@
 [gd_scene load_steps=14 format=3 uid="uid://63bc66h4a8ng"]
 
-[ext_resource type="Script" path="res://scripts/BossTemplate.gd" id="1_phb54"]
-[ext_resource type="Texture2D" uid="uid://csxwduylakj2d" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f0.png" id="2_jh0h5"]
-[ext_resource type="Texture2D" uid="uid://8gocpc0f3eb2" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f1.png" id="3_viql3"]
-[ext_resource type="Texture2D" uid="uid://bg1e67i245ch0" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f2.png" id="4_iitol"]
-[ext_resource type="Texture2D" uid="uid://csoejtq328ouo" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f3.png" id="5_rjj22"]
-[ext_resource type="Texture2D" uid="uid://b3y5gi7rqejdn" path="res://assets/enemies/masked orc/masked_orc_run_anim_f0.png" id="6_wq6yc"]
-[ext_resource type="Texture2D" uid="uid://dcxi6pso4x1me" path="res://assets/enemies/masked orc/masked_orc_run_anim_f1.png" id="7_4qr5u"]
-[ext_resource type="Texture2D" uid="uid://dw88guocighrd" path="res://assets/enemies/masked orc/masked_orc_run_anim_f2.png" id="8_oo3py"]
-[ext_resource type="Texture2D" uid="uid://blm1228cve4hd" path="res://assets/enemies/masked orc/masked_orc_run_anim_f3.png" id="9_7p2gc"]
+[ext_resource type="Script" path="res://scripts/MainBoss_N.gd" id="1_ncl1w"]
+[ext_resource type="Texture2D" uid="uid://ceo6sr3prhgpb" path="res://assets/enemies/big demon/big_demon_idle_anim_f0.png" id="2_lb67m"]
+[ext_resource type="Texture2D" uid="uid://cupjwr4io8edx" path="res://assets/enemies/big demon/big_demon_idle_anim_f1.png" id="3_rjv8d"]
+[ext_resource type="Texture2D" uid="uid://bsyilmpunhnno" path="res://assets/enemies/big demon/big_demon_idle_anim_f2.png" id="4_ek2b2"]
+[ext_resource type="Texture2D" uid="uid://b2vs4shwg778e" path="res://assets/enemies/big demon/big_demon_idle_anim_f3.png" id="5_h5qxj"]
+[ext_resource type="Texture2D" uid="uid://xx8psmgsvy4y" path="res://assets/enemies/big demon/big_demon_run_anim_f0.png" id="6_gvt5g"]
+[ext_resource type="Texture2D" uid="uid://b1k16xf6f3w5a" path="res://assets/enemies/big demon/big_demon_run_anim_f1.png" id="7_xiila"]
+[ext_resource type="Texture2D" uid="uid://dn6mmxnugswcp" path="res://assets/enemies/big demon/big_demon_run_anim_f2.png" id="8_rdjbo"]
+[ext_resource type="Texture2D" uid="uid://bm6o8rnqbu2il" path="res://assets/enemies/big demon/big_demon_run_anim_f3.png" id="9_d8cud"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xucp2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jh0h5")
+"texture": ExtResource("2_lb67m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_viql3")
+"texture": ExtResource("3_rjv8d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_iitol")
+"texture": ExtResource("4_ek2b2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_rjj22")
+"texture": ExtResource("5_h5qxj")
 }],
 "loop": true,
 "name": &"idle",
@@ -31,16 +31,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_wq6yc")
+"texture": ExtResource("6_gvt5g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_4qr5u")
+"texture": ExtResource("7_xiila")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_oo3py")
+"texture": ExtResource("8_rdjbo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_7p2gc")
+"texture": ExtResource("9_d8cud")
 }],
 "loop": true,
 "name": &"run",
@@ -58,15 +58,14 @@ size = Vector2(10, 15.25)
 
 [node name="MainBoss_N" type="CharacterBody2D"]
 position = Vector2(459, -1751)
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_phb54")
+script = ExtResource("1_ncl1w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xucp2")
-animation = &"run"
-frame_progress = 0.51756
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2.66667)

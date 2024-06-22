@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://6f4qipo1p7tn"]
 
-[ext_resource type="Script" path="res://scripts/BossTemplate.gd" id="1_xbq7n"]
+[ext_resource type="Script" path="res://scripts/Boss_W.gd" id="1_uvkyv"]
 [ext_resource type="Texture2D" uid="uid://csxwduylakj2d" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f0.png" id="2_jw7hh"]
 [ext_resource type="Texture2D" uid="uid://8gocpc0f3eb2" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f1.png" id="3_wusdg"]
 [ext_resource type="Texture2D" uid="uid://bg1e67i245ch0" path="res://assets/enemies/masked orc/masked_orc_idle_anim_f2.png" id="4_jvqa4"]
@@ -61,7 +61,7 @@ position = Vector2(-1859, -474)
 scale = Vector2(4, 4)
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_xbq7n")
+script = ExtResource("1_uvkyv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xucp2")

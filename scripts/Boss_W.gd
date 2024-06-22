@@ -19,17 +19,17 @@ signal shooting_skull
 
 func _ready():
 	active = false
-	speed = 250
-	health = 20
+	speed = 180
+	health = 10
 	direction = Vector2.ZERO
 	retreating = false
-	init_bullets_in_clip = 10
+	init_bullets_in_clip = 1
 	curr_bullets_in_clip = init_bullets_in_clip
 	retreating_speed = Settings.MINIBOSS_RETREATING_SPEED
 	$RetreatingTimer.wait_time = Settings.MINIBOSS_RETREAT_TIME
 	$AnimatedSprite2D.play("idle")
-	$IntraClipTimer.wait_time = 0.2
-	$ReloadingClipTimer.wait_time = 2
+	$IntraClipTimer.wait_time = 1
+	$ReloadingClipTimer.wait_time = 3
 
 
 func _physics_process(_delta):
@@ -48,9 +48,11 @@ func _physics_process(_delta):
 			$AnimatedSprite2D.flip_h = player.position.x < position.x
 
 
+
 func shoot_skull_bullet():
 	var aim_direction = player.position - position
 	shooting_skull.emit(position, aim_direction)
+
 
 
 func _on_wake_up_area_2d_body_entered(_body):
@@ -79,15 +81,14 @@ func _on_reloading_clip_timer_timeout():
 	shoot()
 
 
-func shoot(): # THIS BOSS DOES NOT SHOOT
+func shoot():
 	curr_bullets_in_clip -= 1
-	
-	# shoot_skull_bullet()
-	#if curr_bullets_in_clip == 0:
-		#curr_bullets_in_clip = init_bullets_in_clip
-		#$ReloadingClipTimer.start()
-	#else:
-		#$IntraClipTimer.start()
+	shoot_skull_bullet()
+	if curr_bullets_in_clip == 0:
+		curr_bullets_in_clip = init_bullets_in_clip
+		$ReloadingClipTimer.start()
+	else:
+		$IntraClipTimer.start()
 
 
 func die(): 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://5semts736o5q"]
+[gd_scene load_steps=31 format=3 uid="uid://5semts736o5q"]
 
 [ext_resource type="PackedScene" uid="uid://bqy67u7uiuawe" path="res://scenes/world.tscn" id="1_opego"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_v4iix"]
@@ -14,18 +14,22 @@
 [ext_resource type="PackedScene" uid="uid://cdyjly7xlfmoi" path="res://scenes/goblin_spawner_S_1.tscn" id="11_0xaon"]
 [ext_resource type="PackedScene" uid="uid://fh6wq4evkbr6" path="res://scenes/door_2.tscn" id="11_i28f7"]
 [ext_resource type="PackedScene" uid="uid://cvu0eya5ak3vn" path="res://scenes/goblin_spawner_S_2.tscn" id="12_ficcc"]
+[ext_resource type="Script" path="res://scripts/GoblinSpawner_10.gd" id="12_n27pl"]
 [ext_resource type="PackedScene" uid="uid://mafcrf0hfnff" path="res://scenes/door_3.tscn" id="12_owv43"]
 [ext_resource type="PackedScene" uid="uid://co6g6a8ihsqtm" path="res://scenes/goblin_spawner_S_3.tscn" id="13_cisge"]
 [ext_resource type="PackedScene" uid="uid://dvldiqbyasv6q" path="res://scenes/skull_bullet.tscn" id="13_uy6xu"]
+[ext_resource type="Script" path="res://scripts/GoblinSpawner_20.gd" id="14_4rgqh"]
 [ext_resource type="PackedScene" uid="uid://cial7b0bds0ch" path="res://scenes/goblin_spawner_E.tscn" id="14_mumi0"]
 [ext_resource type="PackedScene" uid="uid://hi6m0qairww8" path="res://scenes/menu.tscn" id="15_g1lcv"]
 [ext_resource type="PackedScene" uid="uid://xrfe4jjgael1" path="res://scenes/peaks_S_1.tscn" id="16_6qem8"]
 [ext_resource type="PackedScene" uid="uid://6f4qipo1p7tn" path="res://scenes/boss_w.tscn" id="16_ltr65"]
+[ext_resource type="Script" path="res://scripts/GoblinSpawner_15.gd" id="16_n3fw6"]
 [ext_resource type="PackedScene" uid="uid://cwbukq0dxaxq2" path="res://scenes/boss_s.tscn" id="16_xasw3"]
 [ext_resource type="PackedScene" uid="uid://q5d4edsl6xg" path="res://scenes/boss_e.tscn" id="17_jblg1"]
 [ext_resource type="PackedScene" uid="uid://05lgfn2txmic" path="res://scenes/peaks_S_2.tscn" id="17_tlmqu"]
 [ext_resource type="PackedScene" uid="uid://63bc66h4a8ng" path="res://scenes/main_boss_n.tscn" id="18_wnhy3"]
 [ext_resource type="PackedScene" uid="uid://dmhn1p1k0dc8n" path="res://scenes/peaks_S_3.tscn" id="18_yhr8f"]
+[ext_resource type="PackedScene" uid="uid://nfsvjy6ak268" path="res://scenes/win_area.tscn" id="30_pyrj8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_v4iix")
@@ -52,15 +56,19 @@ position = Vector2(-796, 416)
 
 [node name="GoblinSpawner_S_1" parent="Spawners" instance=ExtResource("11_0xaon")]
 position = Vector2(-1508, 1327)
+script = ExtResource("12_n27pl")
 
 [node name="GoblinSpawner_S_2" parent="Spawners" instance=ExtResource("12_ficcc")]
 position = Vector2(288, 932)
+script = ExtResource("14_4rgqh")
 
 [node name="GoblinSpawner_S_3" parent="Spawners" instance=ExtResource("13_cisge")]
 position = Vector2(1623, 1368)
+script = ExtResource("16_n3fw6")
 
 [node name="GoblinSpawner_E" parent="Spawners" instance=ExtResource("14_mumi0")]
 position = Vector2(1003, 359)
+script = ExtResource("14_4rgqh")
 
 [node name="Peaks" type="Node" parent="."]
 
@@ -102,6 +110,9 @@ position = Vector2(0, -560)
 [node name="Door3" parent="Door" instance=ExtResource("12_owv43")]
 position = Vector2(0, -660)
 
+[node name="Door4" parent="Door" instance=ExtResource("10_sol41")]
+position = Vector2(1056, -2183)
+
 [node name="Menu" parent="." instance=ExtResource("15_g1lcv")]
 offset_left = -12.0
 offset_top = 63.0
@@ -111,7 +122,7 @@ offset_bottom = 63.0
 [node name="Bosses" type="Node" parent="."]
 
 [node name="Boss_W" parent="Bosses" instance=ExtResource("16_ltr65")]
-position = Vector2(-1935, 157)
+position = Vector2(-1907, 173)
 
 [node name="Boss_S" parent="Bosses" instance=ExtResource("16_xasw3")]
 position = Vector2(-1502, 1626)
@@ -122,9 +133,16 @@ position = Vector2(2723, 185)
 [node name="MainBoss_N" parent="Bosses" instance=ExtResource("18_wnhy3")]
 position = Vector2(886, -1597)
 
+[node name="WinArea" parent="." instance=ExtResource("30_pyrj8")]
+position = Vector2(979, -2657)
+
 [connection signal="bullet_count_change" from="Player" to="Panel" method="_on_player_bullet_count_change"]
 [connection signal="coins_amount_change" from="Player" to="Panel" method="_on_player_coins_amount_change"]
 [connection signal="health_change" from="Player" to="Panel" method="_on_player_health_change"]
 [connection signal="item_amount_change" from="Player" to="Panel" method="_on_player_item_amount_change"]
 [connection signal="key_count_change" from="Player" to="Panel" method="_on_player_key_count_change"]
 [connection signal="shooting" from="Player" to="BulletManager" method="_on_player_shooting"]
+[connection signal="shooting_skull" from="Bosses/Boss_W" to="BulletManager" method="_on_boss_w_shooting_skull"]
+[connection signal="shooting_skull" from="Bosses/Boss_S" to="BulletManager" method="_on_boss_s_shooting_skull"]
+[connection signal="shooting_skull" from="Bosses/Boss_E" to="BulletManager" method="_on_boss_e_shooting_skull"]
+[connection signal="shooting_skull" from="Bosses/MainBoss_N" to="BulletManager" method="_on_main_boss_n_shooting_skull"]
