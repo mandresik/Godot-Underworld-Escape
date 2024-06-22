@@ -171,10 +171,11 @@ func add_item_shots(amount: int):
 
 func die():
 	print("game over")
+	call_deferred("restart_game")
+
+
+func restart_game():
 	get_tree().reload_current_scene()
-
-
-
 
 
 

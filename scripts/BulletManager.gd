@@ -40,7 +40,7 @@ func _on_boss_e_shooting_skull(pos, dir):
 	shoot_skull(pos, dir)
 
 func _on_main_boss_n_shooting_skull(pos, dir):
-	var skull_bullet = skull_bullet_scene.instantiate()
-	skull_bullet.position = pos
-	skull_bullet.direction = dir.normalized()
-	call_deferred("add_child", skull_bullet)
+	var fast_skull_bullet = fast_skull_bullet_scene.instantiate()
+	fast_skull_bullet.position = pos
+	fast_skull_bullet.direction = dir.normalized()
+	call_deferred("add_child", fast_skull_bullet)
